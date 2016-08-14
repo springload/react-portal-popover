@@ -45,7 +45,6 @@
   "dependencies": {
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
-    "react-portal": "^2.2.1",
-    "shortid": "^2.2.6"
+    "react-portal": "^2.2.1"
   }
 }

@@ -6,3 +6,15 @@ export const capitalize = (str) => {
   }
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
+const chr4 = () => {
+  return Math.random().toString(16).slice(-4);
+};
+
+export const uniqueId = () => {
+  return chr4() + chr4() +
+    '' + chr4() +
+    '' + chr4() +
+    '' + chr4() +
+    '' + chr4() + chr4() + chr4();
+};

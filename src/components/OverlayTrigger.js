@@ -1,13 +1,12 @@
 import React from 'react';
-import shortid from 'shortid';
-
+import { uniqueId } from '../utils';
 
 class OverlayTrigger extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      id: shortid.generate(),
+      id: uniqueId(),
     };
     this.toggleOverlay = this.toggleOverlay.bind(this);
     this.onClose = this.onClose.bind(this);
