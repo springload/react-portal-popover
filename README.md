@@ -15,7 +15,7 @@ then pass in an `overlay={}` prop with your `ToolTip` that you'd like to display
 
 ```js
 import React from 'react';
-import { OverlayTrigger }, ToolTip from 'react-portal-popover';
+import ToolTip, { OverlayTrigger } from 'react-portal-popover';
 
 const MyComponent = () => {
   const options = {
