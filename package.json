@@ -2,11 +2,12 @@
   "name": "react-portal-popover",
   "version": "0.1.0",
   "description": "Popover for React using portals",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "eslint ./src",
     "test": "mocha test/.setup.js test/**/*.spec.js",
-    "test:watch": "mocha --watch test/.setup.js test/**/*.spec.js"
+    "test:watch": "mocha --watch test/.setup.js test/**/*.spec.js",
+    "prepublish": "./node_modules/.bin/babel -d lib src/"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/springload/react-portal-popover#readme",
   "devDependencies": {
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
     "babel-preset-react": "^6.11.1",
     "babel-register": "^6.11.6",
