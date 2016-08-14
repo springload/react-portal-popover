@@ -52,8 +52,8 @@ class PositionProvider extends React.Component {
   }
 
   getArrow() {
-    const { arrowSize = SIZE, arrowMargin } = this.props;
-    return arrowSize + (typeof arrowMargin !== 'undefined' ? arrowMargin : DEFAULT_ARROW_MARGIN);
+    const { arrowSize = SIZE, arrowOffset } = this.props;
+    return arrowSize + (typeof arrowOffset !== 'undefined' ? arrowOffset : DEFAULT_ARROW_MARGIN);
   }
 
   getTop(offset, elementRect) {
@@ -149,7 +149,7 @@ PositionProvider.propTypes = {
   id: React.PropTypes.string,
   label: React.PropTypes.string,
   arrowSize: React.PropTypes.number,
-  arrowMargin: React.PropTypes.number,
+  arrowOffset: React.PropTypes.number,
 };
 
 export default PositionProvider;

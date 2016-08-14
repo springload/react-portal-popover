@@ -12,6 +12,7 @@ import {
   BORDER_WIDTH,
   USE_FOREGROUND,
   CLASS_BASE,
+  DEFAULT_ARROW_MARGIN
 } from '../constants';
 
 const ToolTip = (props) => {
@@ -19,6 +20,7 @@ const ToolTip = (props) => {
     classBase: CLASS_BASE,
     className: '',
     size: SIZE,
+    offset: DEFAULT_ARROW_MARGIN,
     foregroundColor: FOREGROUND,
     color: BORDER_COLOUR,
     position: props.position || POSITION,
@@ -47,6 +49,7 @@ const ToolTip = (props) => {
         label={props.label}
         id={props.id}
         arrowSize={options.size}
+        arrowOffset={options.offset}
         target={props.trigger}
       >
         <div className={classes} style={style}>

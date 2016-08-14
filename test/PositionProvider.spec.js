@@ -73,10 +73,10 @@ describe('PositionProvider', () => {
       expect(inst.getStyle()).to.deep.equal({ left: 0, top: 9 });
     });
 
-    it('Should respect custom arrowSize + arrowMargin', () => {
+    it('Should respect custom arrowSize + arrowOffset', () => {
       const trigger = document.createElement('div');
       const el = document.createElement('div');
-      const wrapper = shallow(<PositionProvider arrowSize={12} arrowMargin={24} position={'bottom'} target={trigger} />);
+      const wrapper = shallow(<PositionProvider arrowSize={12} arrowOffset={24} position={'bottom'} target={trigger} />);
       const inst = wrapper.instance();
       inst.el = el;
       expect(inst.getStyle()).to.deep.equal({ left: 0, top: 36 });
@@ -85,7 +85,7 @@ describe('PositionProvider', () => {
     it('Should work with horizontal/negative offsets', () => {
       const trigger = document.createElement('div');
       const el = document.createElement('div');
-      const wrapper = shallow(<PositionProvider arrowSize={12} arrowMargin={24} position={'left'} target={trigger} />);
+      const wrapper = shallow(<PositionProvider arrowSize={12} arrowOffset={24} position={'left'} target={trigger} />);
       const inst = wrapper.instance();
       inst.el = el;
       expect(inst.getStyle()).to.deep.equal({ top: 0, left: -36 });
@@ -95,7 +95,7 @@ describe('PositionProvider', () => {
   it('should prevent event propagation when clicked', () => {
     const trigger = document.createElement('div');
     const el = document.createElement('div');
-    const wrapper = shallow(<PositionProvider arrowSize={12} arrowMargin={24} position={'left'} target={trigger} />);
+    const wrapper = shallow(<PositionProvider arrowSize={12} arrowOffset={24} position={'left'} target={trigger} />);
     const inst = wrapper.instance();
     inst.el = el;
 
@@ -117,7 +117,7 @@ describe('PositionProvider', () => {
     it('should be called on componentDidUpdate and componentDidMount', () => {
       const trigger = document.createElement('div');
       const el = document.createElement('div');
-      const wrapper = shallow(<PositionProvider arrowSize={12} arrowMargin={24} position={'left'} target={trigger} />);
+      const wrapper = shallow(<PositionProvider arrowSize={12} arrowOffset={24} position={'left'} target={trigger} />);
       const inst = wrapper.instance();
       inst.el = el;
 
@@ -129,7 +129,7 @@ describe('PositionProvider', () => {
     it('Should set the style of the referenced element', () => {
       const trigger = document.createElement('div');
       const el = document.createElement('div');
-      const wrapper = shallow(<PositionProvider arrowSize={12} arrowMargin={24} position={'left'} target={trigger} />);
+      const wrapper = shallow(<PositionProvider arrowSize={12} arrowOffset={24} position={'left'} target={trigger} />);
       const inst = wrapper.instance();
       inst.el = el;
       inst.positionElement({ left: 0, top: 0 });
@@ -186,7 +186,7 @@ describe('PositionProvider', () => {
 
     it('Should get the size of the arrow + the offset', () => {
       const trigger = document.createElement('div');
-      const wrapper = shallow(<PositionProvider arrowSize={0} arrowMargin={0} position={'left'} target={trigger} />);
+      const wrapper = shallow(<PositionProvider arrowSize={0} arrowOffset={0} position={'left'} target={trigger} />);
       const inst = wrapper.instance();
       expect(inst.getArrow()).to.equal(0);
     });
