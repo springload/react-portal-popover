@@ -1,4 +1,4 @@
-# react-portal-popover
+# react-portal-popover [![Build Status](https://travis-ci.org/springload/react-portal-popover.svg?branch=master)](https://travis-ci.org/springload/react-portal-popover)
 
 A popover library for React, using [Portals](https://github.com/tajo/react-portal) for better positioning.
 
