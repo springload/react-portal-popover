@@ -70,7 +70,7 @@ describe('PositionProvider', () => {
       const wrapper = shallow(<PositionProvider position={'bottom'} target={trigger} />);
       const inst = wrapper.instance();
       inst.el = el;
-      expect(inst.getStyle()).to.deep.equal({ left: '0px', top: '9px' });
+      expect(inst.getStyle()).to.deep.equal({ left: 0, top: 9 });
     });
 
     it('Should respect custom arrowSize + arrowMargin', () => {
@@ -79,7 +79,7 @@ describe('PositionProvider', () => {
       const wrapper = shallow(<PositionProvider arrowSize={12} arrowMargin={24} position={'bottom'} target={trigger} />);
       const inst = wrapper.instance();
       inst.el = el;
-      expect(inst.getStyle()).to.deep.equal({ left: '0px', top: '36px' });
+      expect(inst.getStyle()).to.deep.equal({ left: 0, top: 36 });
     });
 
     it('Should work with horizontal/negative offsets', () => {
@@ -88,7 +88,7 @@ describe('PositionProvider', () => {
       const wrapper = shallow(<PositionProvider arrowSize={12} arrowMargin={24} position={'left'} target={trigger} />);
       const inst = wrapper.instance();
       inst.el = el;
-      expect(inst.getStyle()).to.deep.equal({ top: '0px', left: '-36px' });
+      expect(inst.getStyle()).to.deep.equal({ top: 0, left: -36 });
     });
   });
 
@@ -145,7 +145,7 @@ describe('PositionProvider', () => {
       const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
       const inst = wrapper.instance();
 
-      expect(inst.getTop(offset, rectstub)).to.deep.equal({left: '0px', top: '-9px'});
+      expect(inst.getTop(offset, rectstub)).to.deep.equal({left: 0, top: -9});
     });
   });
 
@@ -154,7 +154,7 @@ describe('PositionProvider', () => {
       const trigger = document.createElement('div');
       const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
       const inst = wrapper.instance();
-      expect(inst.getBottom(offset, rectstub)).to.deep.equal({left: '0px', top: '9px'});
+      expect(inst.getBottom(offset, rectstub)).to.deep.equal({left: 0, top: 9});
     });
   });
 
@@ -163,7 +163,7 @@ describe('PositionProvider', () => {
       const trigger = document.createElement('div');
       const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
       const inst = wrapper.instance();
-      expect(inst.getLeft(offset, rectstub)).to.deep.equal({left: '-9px', top: '0px'});
+      expect(inst.getLeft(offset, rectstub)).to.deep.equal({left: -9, top: 0});
     });
   });
 
@@ -172,7 +172,7 @@ describe('PositionProvider', () => {
       const trigger = document.createElement('div');
       const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
       const inst = wrapper.instance();
-      expect(inst.getRight(offset, rectstub)).to.deep.equal({left: '9px', top: '0px'});
+      expect(inst.getRight(offset, rectstub)).to.deep.equal({left: 9, top: 0});
     });
   });
 

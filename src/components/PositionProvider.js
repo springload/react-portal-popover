@@ -23,8 +23,8 @@ class PositionProvider extends React.Component {
   }
 
   positionElement(nextStyle) {
-    this.el.style.top = nextStyle.top;
-    this.el.style.left = nextStyle.left;
+    this.el.style.top = `${nextStyle.top}px`;
+    this.el.style.left = `${nextStyle.left}px`;
   }
 
   componentDidMount() {
@@ -43,32 +43,32 @@ class PositionProvider extends React.Component {
   getTop(offset, elementRect) {
     const { rect, scrollTop, scrollLeft } = offset;
     return {
-      left: `${rect.left + scrollLeft + (-elementRect.width / 2) + (rect.width / 2)}px`,
-      top: `${rect.top + scrollTop + (-this.getArrow()) + (-elementRect.height)}px`,
+      left: rect.left + scrollLeft + (-elementRect.width / 2) + (rect.width / 2),
+      top: rect.top + scrollTop + (-this.getArrow()) + (-elementRect.height),
     };
   }
 
   getBottom(offset, elementRect) {
     const { rect, scrollTop, scrollLeft } = offset;
     return {
-      left: `${rect.left + scrollLeft + (-elementRect.width / 2) + (rect.width / 2)}px`,
-      top: `${rect.bottom + scrollTop + (this.getArrow())}px`,
+      left: rect.left + scrollLeft + (-elementRect.width / 2) + (rect.width / 2),
+      top: rect.bottom + scrollTop + (this.getArrow()),
     };
   }
 
   getLeft(offset, elementRect) {
     const { rect, scrollTop, scrollLeft } = offset;
     return {
-      left: `${rect.left + scrollLeft + (-elementRect.width) + (-this.getArrow())}px`,
-      top: `${rect.top + scrollTop + (-elementRect.height / 2) + (rect.height / 2)}px`,
+      left: rect.left + scrollLeft + (-elementRect.width) + (-this.getArrow()),
+      top: rect.top + scrollTop + (-elementRect.height / 2) + (rect.height / 2),
     };
   }
 
   getRight(offset, elementRect) {
     const { rect, scrollTop, scrollLeft } = offset;
     return {
-      left: `${rect.right + scrollLeft + (this.getArrow())}px`,
-      top: `${rect.top + scrollTop + (-elementRect.height / 2) + (rect.height / 2)}px`,
+      left: rect.right + scrollLeft + (this.getArrow()),
+      top: rect.top + scrollTop + (-elementRect.height / 2) + (rect.height / 2),
     };
   }
 
