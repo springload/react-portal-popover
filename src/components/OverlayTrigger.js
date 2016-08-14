@@ -18,10 +18,18 @@ class OverlayTrigger extends React.Component {
 
   addCloseHandler() {
     document.addEventListener('click', this.onClickOutside);
+    window.addEventListener('resize', this.onClickOutside);
+    if (this.props.closeOnScroll) {
+      document.addEventListener('scroll', this.onClickOutside);
+    }
   }
 
   removeCloseHandler() {
     document.removeEventListener('click', this.onClickOutside);
+    window.removeEventListener('resize', this.onClickOutside);
+    if (this.props.closeOnScroll) {
+      document.removeEventListener('scroll', this.onClickOutside);
+    }
   }
 
   toggleOverlay() {
@@ -103,6 +111,7 @@ class OverlayTrigger extends React.Component {
 }
 
 OverlayTrigger.propTypes = {
+  closeOnScroll: React.PropTypes.bool,
   children: React.PropTypes.element.isRequired,
   overlay: React.PropTypes.object.isRequired,
   hideLabel: React.PropTypes.string,

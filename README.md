@@ -64,6 +64,14 @@ const options = {
 ```
 
 
+### OverlayTrigger options
+
+`closeOnScroll` determines whether the tooltip closes when you scroll the window.
+
+```
+<OverlayTrigger closeOnScroll={true|false} />
+```
+
 ## Developing
 
 React is listed as a peerDependency, so you'll need to install a version of it yourself.
