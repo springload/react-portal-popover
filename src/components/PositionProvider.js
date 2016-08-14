@@ -2,6 +2,22 @@ import React from 'react';
 import { DEFAULT_ARROW_MARGIN, POSITION, SIZE } from '../constants';
 
 
+const clamp = (direction, value, targetLength, elementLength) => {
+  const MARGIN = 10;
+  const bodyRect = document.body.getBoundingClientRect();
+  if (direction === 'left') {
+    if (value < 0) {
+      value = MARGIN;
+    } else if (value + elementLength >= bodyRect.right - MARGIN) {
+      value = bodyRect.right - MARGIN - (elementLength);
+    }
+  }
+
+  return value;
+};
+
+
+
 class PositionProvider extends React.Component {
   constructor(props) {
     super(props);
@@ -88,6 +104,12 @@ class PositionProvider extends React.Component {
       left: this.getLeft,
       right: this.getRight,
     };
+
+    // TODO:
+    // The desired method might not actually be the appropriate method.
+    // Therefore, we should check if there is sufficient space to execute the
+    // desired layout before selecting which method to use.
+    // We can then check the bounds and do clamping.
 
     return methods[positionWithDefault](offset, elementRect);
   }
