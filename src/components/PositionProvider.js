@@ -2,22 +2,6 @@ import React from 'react';
 import { DEFAULT_ARROW_MARGIN, POSITION, SIZE } from '../constants';
 
 
-const clamp = (direction, value, targetLength, elementLength) => {
-  const MARGIN = 10;
-  const bodyRect = document.body.getBoundingClientRect();
-  if (direction === 'left') {
-    if (value < 0) {
-      value = MARGIN;
-    } else if (value + elementLength >= bodyRect.right - MARGIN) {
-      value = bodyRect.right - MARGIN - (elementLength);
-    }
-  }
-
-  return value;
-};
-
-
-
 class PositionProvider extends React.Component {
   constructor(props) {
     super(props);

@@ -12,7 +12,7 @@ import {
   BORDER_WIDTH,
   USE_FOREGROUND,
   CLASS_BASE,
-  DEFAULT_ARROW_MARGIN
+  DEFAULT_ARROW_MARGIN,
 } from '../constants';
 
 const ToolTip = (props) => {
