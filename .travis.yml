@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - '4.4.7'
+  - "6"
+  - "6.1"
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+script:
+- npm run lint
+- npm run test
+notifications:
+  email: false
+  slack:
+    secure: cBEjOYxg1h7ya34vUPwJKkEeNdu4uI9Vw1oSdCZg+6TXAD65lUfWeHfTjB5i2C2YiWNoDiaf8W4BLF1C8gV1VBqHsoIKsLIBkCE7wVORjgDaSUbDsHkiHWOyroGi4l1fxvT6r0u/VexwjL6i25lxEKMSvi0Ou31mn1jo8fE6kmqwY/dCRCXciiE3aAv37vKKoG6ITz30E+uG0KnTeBCsDxt4IO9NWqz6aeGsxw+K5lV3QruDPnCDm//naXZKgiJL4AZe4/0GeRP4j2cNRNEXXZzKG+DjwimNcxco2mIcvugUIcC0GmCHbReGUXzDaxcraWrjLITS9ls5ktXVW4EUXdwV2kjDfYDsCABSk2Mz1CS6a8PmSLV/znUEziEwHhQrun7qX56Nh02CDxGhVB3W4ZO6M78sFaipqibOjWqMpo9rpgXveZIno2xkWE9AA6eH6/eSfN1nf/Im6yDQEjX5/uIkdrY9rMSLReYdsZHsGiU5OGNUPfyS3u8JIb9KzftIP4p3iVaPSLNc0hDJWqzkNhFV/R/wGVElplN+1dNSqkfbV6C9OwmLpDh21dVNmOP13Yu8RnFeZmvKMiQqYnj3mxLUvBj+sJkWLFYd8/Kz/8m3gLN2YioGI2F5MCwW6u21OHi78KuB+B4jA303DDMYovjXy4dCSykIVFoqCBaqQjA=
