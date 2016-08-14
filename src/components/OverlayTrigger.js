@@ -32,7 +32,12 @@ class OverlayTrigger extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    this.isNodeMounted = true;
+  }
+
   componentWillUnmount() {
+    this.isNodeMounted = false;
     this.removeCloseHandler();
   }
 
@@ -49,12 +54,13 @@ class OverlayTrigger extends React.Component {
   }
 
   onClose() {
-    this.removeCloseHandler();
-    // Prevent race with toggleOverlay
     setTimeout(() => {
-      this.setState({
-        open: false,
-      });
+      if (this.isNodeMounted) {
+        this.setState({
+          open: false,
+        });
+        this.removeCloseHandler();
+      }
     }, 0);
   }
 
