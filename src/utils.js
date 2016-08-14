@@ -12,9 +12,5 @@ const chr4 = () => {
 };
 
 export const uniqueId = () => {
-  return chr4() + chr4() +
-    '' + chr4() +
-    '' + chr4() +
-    '' + chr4() +
-    '' + chr4() + chr4() + chr4();
+  return [chr4(), chr4(), chr4(), chr4(), chr4(), chr4(), chr4(), chr4()].join('');
 };
