@@ -89,7 +89,6 @@ class PositionProvider extends React.Component {
       right: this.getRight,
     };
 
-    // TODO:
     // The desired method might not actually be the appropriate method.
     // Therefore, we should check if there is sufficient space to execute the
     // desired layout before selecting which method to use.
