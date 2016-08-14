@@ -6,6 +6,15 @@ import { shallow, mount, render } from 'enzyme';
 import PositionProvider from '../src/components/PositionProvider';
 
 
+const rectstub = { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0 };
+
+const offset = {
+  rect: rectstub,
+  scrollTop: 0,
+  scrollLeft: 0
+};
+
+
 describe('PositionProvider', () => {
   it('Should exist', () => {
     expect(PositionProvider).to.exist;
@@ -129,4 +138,57 @@ describe('PositionProvider', () => {
     });
   });
 
+
+  describe('@getTop', () => {
+    it('Should return a coordinate object', () => {
+      const trigger = document.createElement('div');
+      const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
+      const inst = wrapper.instance();
+
+      expect(inst.getTop(offset, rectstub)).to.deep.equal({left: '0px', top: '-9px'});
+    });
+  });
+
+  describe('@getBottom', () => {
+    it('Should return a coordinate object', () => {
+      const trigger = document.createElement('div');
+      const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
+      const inst = wrapper.instance();
+      expect(inst.getBottom(offset, rectstub)).to.deep.equal({left: '0px', top: '9px'});
+    });
+  });
+
+  describe('@getLeft', () => {
+    it('Should return a coordinate object', () => {
+      const trigger = document.createElement('div');
+      const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
+      const inst = wrapper.instance();
+      expect(inst.getLeft(offset, rectstub)).to.deep.equal({left: '-9px', top: '0px'});
+    });
+  });
+
+  describe('@getRight', () => {
+    it('Should return a coordinate object', () => {
+      const trigger = document.createElement('div');
+      const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
+      const inst = wrapper.instance();
+      expect(inst.getRight(offset, rectstub)).to.deep.equal({left: '9px', top: '0px'});
+    });
+  });
+
+  describe('@getArrow', () => {
+    it('Should get the size of the arrow + the offset', () => {
+      const trigger = document.createElement('div');
+      const wrapper = shallow(<PositionProvider position={'left'} target={trigger} />);
+      const inst = wrapper.instance();
+      expect(inst.getArrow()).to.equal(9);
+    });
+
+    it('Should get the size of the arrow + the offset', () => {
+      const trigger = document.createElement('div');
+      const wrapper = shallow(<PositionProvider arrowSize={0} arrowMargin={0} position={'left'} target={trigger} />);
+      const inst = wrapper.instance();
+      expect(inst.getArrow()).to.equal(0);
+    });
+  });
 });
