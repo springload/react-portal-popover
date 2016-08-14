@@ -32,6 +32,10 @@ class OverlayTrigger extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.removeCloseHandler();
+  }
+
   toggleOverlay() {
     this.setState({
       open: !this.state.open,
