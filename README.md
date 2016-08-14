@@ -44,8 +44,11 @@ const MyComponent = () => {
 
 ## Developing
 
+React is listed as a peerDependency, so you'll need to install a version of it yourself.
+
 ```
 npm install
+npm install react
 ```
 
 ## Running tests
@@ -53,4 +56,5 @@ npm install
 ```js
 npm test
 npm run test:watch
+npm run lint
 ```
