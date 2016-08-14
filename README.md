@@ -1,4 +1,4 @@
-# react-portal-popover [![Build Status](https://travis-ci.org/springload/react-portal-popover.svg?branch=master)](https://travis-ci.org/springload/react-portal-popover)
+# react-portal-popover [![npm](https://img.shields.io/npm/v/react-portal-popover.svg)](https://www.npmjs.com/package/react-portal-popover) [![Dependency Status](https://david-dm.org/springload/react-portal-popover.svg)](https://david-dm.org/springload/react-portal-popover) [![devDependency Status](https://david-dm.org/springload/react-portal-popover/dev-status.svg)](https://david-dm.org/springload/react-portal-popover#info=devDependencies) [![Build Status](https://travis-ci.org/springload/react-portal-popover.svg?branch=master)](https://travis-ci.org/springload/react-portal-popover)
 
 A popover library for React, using [Portals](https://github.com/tajo/react-portal) for better positioning.
 
