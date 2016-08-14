@@ -42,9 +42,15 @@ const MyComponent = () => {
 };
 ```
 
+## Developing
+
+```
+npm install
+```
+
 ## Running tests
 
 ```js
 npm test
-npm test:watch
+npm run test:watch
 ```
