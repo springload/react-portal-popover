@@ -1,6 +1,6 @@
 {
   "name": "react-portal-popover",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Popover for React using portals",
   "main": "lib/index.js",
   "scripts": {
