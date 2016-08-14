@@ -1,21 +1,7 @@
-# react-portal-popover
-
-A popover library for React, using Portals for better positioning.
-
-## Installation
-
-```
-npm install react-portal-popover
-```
-
-## Usage
-
-There's two steps: import the `OverlayTrigger` that decorates your toggle element,
-then pass in an `overlay={}` prop with your `ToolTip` that you'd like to display.
-
-```js
 import React from 'react';
-import { OverlayTrigger }, ToolTip from 'react-portal-popover';
+import ToolTip from '../src/components/ToolTip';
+import OverlayTrigger from '../src/components/OverlayTrigger';
+
 
 const MyComponent = () => {
   const options = {
@@ -40,11 +26,5 @@ const MyComponent = () => {
     </div>
   );
 };
-```
 
-## Running tests
-
-```js
-npm test
-npm test:watch
-```
+MyComponent.propTypes = {};
