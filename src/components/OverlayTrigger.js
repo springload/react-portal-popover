@@ -37,17 +37,17 @@ class OverlayTrigger extends React.Component {
   }
 
   onClose() {
+    this.removeCloseHandler();
     // Prevent race with toggleOverlay
     setTimeout(() => {
       this.setState({
         open: false,
-      }, () => {
-        this.removeCloseHandler();
       });
     }, 0);
   }
 
   onClickOutside() {
+    this.removeCloseHandler();
     this.setState({
       open: false,
     });
