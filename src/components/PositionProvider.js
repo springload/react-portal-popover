@@ -1,5 +1,5 @@
 import React from 'react';
-import { DEFAULT_ARROW_MARGIN, POSITION } from '../constants';
+import { DEFAULT_ARROW_MARGIN, POSITION, SIZE } from '../constants';
 
 
 class PositionProvider extends React.Component {
@@ -7,7 +7,6 @@ class PositionProvider extends React.Component {
     super(props);
     this.getOffset = this.getOffset.bind(this);
     this.getStyle = this.getStyle.bind(this);
-    this.positionElement = this.positionElement.bind(this);
     this.positionElement = this.positionElement.bind(this);
     this.getBottom = this.getBottom.bind(this);
     this.getTop = this.getTop.bind(this);
@@ -18,27 +17,26 @@ class PositionProvider extends React.Component {
   getOffset(node) {
     return {
       rect: node.getBoundingClientRect(),
-      scrollTop: document.body.scrollTop,
-      scrollLeft: document.body.scrollLeft,
+      scrollTop: document.body.scrollTop || 0,
+      scrollLeft: document.body.scrollLeft || 0,
     };
   }
 
-  positionElement() {
-    const nextStyle = this.getStyle();
+  positionElement(nextStyle) {
     this.el.style.top = nextStyle.top;
     this.el.style.left = nextStyle.left;
   }
 
   componentDidMount() {
-    this.positionElement();
+    this.positionElement(this.getStyle());
   }
 
   componentDidUpdate() {
-    this.positionElement();
+    this.positionElement(this.getStyle());
   }
 
   getArrow() {
-    const { arrowSize, arrowMargin } = this.props;
+    const { arrowSize = SIZE, arrowMargin } = this.props;
     return arrowSize + (arrowMargin || DEFAULT_ARROW_MARGIN);
   }
 
