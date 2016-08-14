@@ -4,6 +4,7 @@
   "description": "Popover for React using portals",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint ./src",
     "test": "mocha test/.setup.js test/**/*.spec.js",
     "test:watch": "mocha --watch test/.setup.js test/**/*.spec.js"
   },
