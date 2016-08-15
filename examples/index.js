@@ -27,13 +27,13 @@ const MyComponent = () => {
 
   return (
     <div>
-      <OverlayTrigger overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+      <OverlayTrigger closeOnScroll={true} overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
         <button>Toggle</button>
       </OverlayTrigger>
       <div style={right}>
-      <OverlayTrigger overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
-        <button>Toggle 2</button>
-      </OverlayTrigger>
+        <OverlayTrigger  closeOnScroll={true} overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle 2</button>
+        </OverlayTrigger>
       </div>
     </div>
   );

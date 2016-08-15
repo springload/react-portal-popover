@@ -14,13 +14,15 @@ class OverlayTrigger extends React.Component {
     this.removeCloseHandler = this.removeCloseHandler.bind(this);
     this.onClickOutside = this.onClickOutside.bind(this);
     this.accessibleLabel = this.accessibleLabel.bind(this);
+    this.onScroll = this.onScroll.bind(this);
   }
 
   addCloseHandler() {
     document.addEventListener('click', this.onClickOutside);
     window.addEventListener('resize', this.onClickOutside);
     if (this.props.closeOnScroll) {
-      document.addEventListener('scroll', this.onClickOutside);
+      // Use capture for scroll events
+      window.addEventListener('scroll', this.onScroll, true);
     }
   }
 
@@ -28,7 +30,7 @@ class OverlayTrigger extends React.Component {
     document.removeEventListener('click', this.onClickOutside);
     window.removeEventListener('resize', this.onClickOutside);
     if (this.props.closeOnScroll) {
-      document.removeEventListener('scroll', this.onClickOutside);
+      window.removeEventListener('scroll', this.onScroll, false);
     }
   }
 
@@ -62,6 +64,12 @@ class OverlayTrigger extends React.Component {
         this.removeCloseHandler();
       }
     }, 0);
+  }
+
+  onScroll() {
+    this.setState({
+      open: false,
+    });
   }
 
   onClickOutside() {
