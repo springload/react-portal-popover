@@ -29,9 +29,7 @@ class OverlayTrigger extends React.Component {
   removeCloseHandler() {
     document.removeEventListener('click', this.onClickOutside);
     window.removeEventListener('resize', this.onClickOutside);
-    if (this.props.closeOnScroll) {
-      window.removeEventListener('scroll', this.onScroll, false);
-    }
+    window.removeEventListener('scroll', this.onScroll, true);
   }
 
   componentDidUpdate() {
