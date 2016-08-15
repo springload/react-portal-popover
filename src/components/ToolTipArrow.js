@@ -38,7 +38,7 @@ const ToolTipArrow = (props) => {
     style[`margin${positionProp}`] = `-${borderWidth}px`;
   }
 
-  return <span style={style} />;
+  return <span data-tooltip-arrow style={style} />;
 };
 
 ToolTipArrow.propTypes = {

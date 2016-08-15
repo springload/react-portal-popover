@@ -19,20 +19,110 @@ const MyComponent = () => {
     </ToolTip>
   );
 
+  const toolTipTop = (
+    <ToolTip position={'top'} options={options}>
+      <p>My tooltip content</p>
+    </ToolTip>
+  );
+
+  const toolTipRight = (
+    <ToolTip position={'right'} options={options}>
+      <p>My tooltip content</p>
+      <p>My tooltip content</p>
+      <p>My tooltip content</p>
+    </ToolTip>
+  );
+
+  const leftOptions = Object.assign({}, options, {size: 5});
+
+  const toolTipLeft = (
+    <ToolTip position={'left'} options={leftOptions}>
+      <p>My tooltip content</p>
+      <p>My tooltip content</p>
+      <p>My tooltip content</p>
+    </ToolTip>
+  );
+
   const right = {
     position: 'absolute',
     right: '20px',
     top: '20px',
   };
 
+  const left = {
+    position: 'absolute',
+    left: '20px',
+    top: '20px',
+  };
+
+  const bottomRight = {
+    position: 'absolute',
+    bottom: '20px',
+    right: '20px',
+  };
+
+  const bottomLeft = {
+    position: 'absolute',
+    bottom: '20px',
+    left: '20px',
+  };
+
+  const topMiddle = {
+    position: 'absolute',
+    textAlign: 'center',
+    top: '20px',
+    left: '50%',
+    marginLeft: '-75px',
+    width: '200px',
+  };
+
+  const bottomMiddle = {
+    position: 'absolute',
+    textAlign: 'center',
+    bottom: '20px',
+    left: '50%',
+    marginLeft: '-75px',
+    width: '200px',
+  };
+
   return (
     <div>
-      <OverlayTrigger closeOnScroll={true} overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
-        <button>Toggle</button>
-      </OverlayTrigger>
+      <div style={left}>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle</button>
+        </OverlayTrigger>
+      </div>
+
+      <div style={topMiddle} className='inline-blocks'>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle</button>
+        </OverlayTrigger>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTipTop} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle</button>
+        </OverlayTrigger>
+      </div>
+
       <div style={right}>
         <OverlayTrigger  closeOnScroll={true} overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
-          <button>Toggle 2</button>
+          <button>Toggle</button>
+        </OverlayTrigger>
+      </div>
+      <div style={bottomRight}>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTipLeft} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle</button>
+        </OverlayTrigger>
+      </div>
+      <div style={bottomMiddle} className='inline-blocks'>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTipTop} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle</button>
+        </OverlayTrigger>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTip} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+        <button>Toggle</button>
+        </OverlayTrigger>
+      </div>
+      <div style={bottomLeft}>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTipRight} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle</button>
         </OverlayTrigger>
       </div>
     </div>

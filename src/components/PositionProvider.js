@@ -1,6 +1,52 @@
 import React from 'react';
 import { DEFAULT_ARROW_MARGIN, POSITION, SIZE } from '../constants';
 
+const BOUNDARY = 10;
+
+const clampHorizontal = (rect, elementRect, left) => {
+  const bodyRect = document.body.getBoundingClientRect();
+  let arrowLeft;
+  let nextLeft = left;
+
+  if (left < 0) {
+    nextLeft = BOUNDARY;
+    arrowLeft = (rect.width / 2);
+  } else if (left + elementRect.width >= bodyRect.right - BOUNDARY) {
+    nextLeft = bodyRect.right - elementRect.width - BOUNDARY;
+    arrowLeft = elementRect.width - (rect.width / 2);
+  }
+
+  return { nextLeft, arrowLeft };
+};
+
+
+const clampVertical = (rect, elementRect, top) => {
+  const bodyRect = { top: document.body.scrollTop, bottom: window.innerHeight };
+  let arrowBottom;
+  let nextTop = top;
+
+  console.log(rect, elementRect, top);
+
+  if (top < 0) {
+    nextTop = BOUNDARY;
+    arrowBottom = (rect.height / 2);
+  } else if (top + elementRect.height >= bodyRect.bottom - BOUNDARY) {
+    nextTop = bodyRect.bottom - elementRect.height - (rect.height / 2) - BOUNDARY;
+    arrowBottom = (rect.height / 2);
+  }
+
+  return { nextTop, arrowBottom };
+};
+
+const computeLeft = (rect, elementRect, scrollLeft) => {
+  return rect.left + scrollLeft + (-elementRect.width / 2) + (rect.width / 2);
+};
+
+
+const computeTop = (rect, elementRect, scrollTop) => {
+  return rect.top + scrollTop + (rect.height / 2) + (-elementRect.height / 2);
+};
+
 
 class PositionProvider extends React.Component {
   constructor(props) {
@@ -25,6 +71,17 @@ class PositionProvider extends React.Component {
   positionElement(nextStyle) {
     this.el.style.top = `${nextStyle.top}px`;
     this.el.style.left = `${nextStyle.left}px`;
+    const arrows = Array.prototype.slice.call(this.el.querySelectorAll('[data-tooltip-arrow]'));
+
+    arrows.forEach(node => {
+      const arrow = node;
+      if (nextStyle.arrowLeft) {
+        arrow.style.left = `${nextStyle.arrowLeft}px`;
+      }
+      if (nextStyle.arrowBottom) {
+        arrow.style.bottom = `${nextStyle.arrowBottom}px`;
+      }
+    });
   }
 
   componentDidMount() {
@@ -42,33 +99,51 @@ class PositionProvider extends React.Component {
 
   getTop(offset, elementRect) {
     const { rect, scrollTop, scrollLeft } = offset;
+
+    const left = computeLeft(rect, elementRect, scrollLeft);
+    const { nextLeft, arrowLeft } = clampHorizontal(rect, elementRect, left);
+
     return {
-      left: rect.left + scrollLeft + (-elementRect.width / 2) + (rect.width / 2),
+      left: nextLeft,
       top: rect.top + scrollTop + (-this.getArrow()) + (-elementRect.height),
+      arrowLeft,
     };
   }
 
   getBottom(offset, elementRect) {
     const { rect, scrollTop, scrollLeft } = offset;
+
+    const left = computeLeft(rect, elementRect, scrollLeft);
+    const { nextLeft, arrowLeft } = clampHorizontal(rect, elementRect, left);
+
     return {
-      left: rect.left + scrollLeft + (-elementRect.width / 2) + (rect.width / 2),
+      left: nextLeft,
       top: rect.bottom + scrollTop + (this.getArrow()),
+      arrowLeft,
     };
   }
 
   getLeft(offset, elementRect) {
     const { rect, scrollTop, scrollLeft } = offset;
+    const top = computeTop(rect, elementRect, scrollTop);
+    const { nextTop, arrowBottom } = clampVertical(rect, elementRect, top);
+
     return {
       left: rect.left + scrollLeft + (-elementRect.width) + (-this.getArrow()),
-      top: rect.top + scrollTop + (-elementRect.height / 2) + (rect.height / 2),
+      top: nextTop,
+      arrowBottom,
     };
   }
 
   getRight(offset, elementRect) {
     const { rect, scrollTop, scrollLeft } = offset;
+    const top = computeTop(rect, elementRect, scrollTop);
+    const { nextTop, arrowBottom } = clampVertical(rect, elementRect, top);
+
     return {
       left: rect.right + scrollLeft + (this.getArrow()),
-      top: rect.top + scrollTop + (-elementRect.height / 2) + (rect.height / 2),
+      top: nextTop,
+      arrowBottom,
     };
   }
 

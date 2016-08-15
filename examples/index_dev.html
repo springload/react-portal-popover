@@ -5,26 +5,100 @@
     <style>
     body {
       min-height: 120vh;
+      font-family: sans-serif;
+      margin: 0;
+      color: #444;
+    }
+
+    h1 {
+      color: #222;
     }
 
     .wrapper {
       height: 400px;
       overflow: hidden;
       overflow-y: scroll;
-      margin-right: 100px;
-
     }
 
-    #root {
+    .scroll {
       height: 600px;
+    }
+
+    .root {
+      position: absolute;
+      min-height: 100vh;
+      left: 0px;
+      top: 0px;
+      right: 0px;
+    }
+
+    .tooltip  {
+      border-radius: 2px;
+        border: solid 1px #999;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: .75rem 1rem;
+        font-size: 14px;
+        color: #444;
+    }
+
+    button {
+      -webkit-appearance: none;
+      background: #20c110;
+      padding: 0 .75rem;
+      line-height: 2.5;
+      color: #fff;
+      border-radius: 3px;
+      border: none;
+    }
+
+    button:focus {
+      box-shadow: 0 0 10px rgba(0,0, 255, 0.25);
+    }
+
+    .tooltip p {
+      margin: 0;
+    }
+
+    .marketing {
+      margin-top: 20vh;
+      max-width: 400px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .u-accessible {
+      position: absolute;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      height: 1px; width: 1px;
+      margin: -1px; padding: 0; border: 0;
+    }
+
+    .inline-blocks > span {
+      display: inline-block;
+      margin-right: .5rem;
     }
 
     </style>
   </head>
   <body>
-    <div class="wrapper">
-      <div id="root"></div>
-    </div>
+      <div class="marketing">
+        <h1>React Portal Popover</h1>
+        <p>
+          Simple, accessible popovers for React.
+        </p>
+        <p>
+          <a href="https://github.com/springload/react-portal-popover">Github</a>
+        </p>
+      </div>
+      <div id="root" class="root">
+        <div class="wrapper">
+        </div>
+      </div>
     <script src="/static/examples_bundle.js"></script>
   </body>
 </html>
