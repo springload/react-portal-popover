@@ -6,3 +6,4 @@ export const BORDER_COLOUR = '#999';
 export const POSITION = 'bottom';
 export const USE_FOREGROUND = true;
 export const CLASS_BASE = 'tooltip';
+export const BOUNDARY = 10;

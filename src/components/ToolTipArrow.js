@@ -5,11 +5,11 @@ import { POSITION } from '../constants';
 
 const ToolTipArrow = (props) => {
   const {
-    position,
     size,
     color,
     foregroundColor,
     borderWidth,
+    position
   } = props.options;
 
   const positions = {
@@ -24,6 +24,9 @@ const ToolTipArrow = (props) => {
   const positionProp = capitalize(position);
   const marginProp = capitalize(majorAxis);
 
+  const borders = Object.keys(positions).filter(key => key !== position).map(key => capitalize(key));
+
+
   const style = {
     position: 'absolute',
     display: 'block',
@@ -33,6 +36,10 @@ const ToolTipArrow = (props) => {
     [`margin${marginProp}`]: `-${size}px`,
     [`border${positionProp}Color`]: props.foreground ? foregroundColor : color,
   };
+
+  borders.forEach(border => {
+    style[`border${border}Color`] = 'transparent';
+  });
 
   if (props.foreground) {
     style[`margin${positionProp}`] = `-${borderWidth}px`;

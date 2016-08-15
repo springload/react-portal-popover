@@ -33,7 +33,7 @@ const MyComponent = () => {
     </ToolTip>
   );
 
-  const leftOptions = Object.assign({}, options, {size: 5});
+  const leftOptions = Object.assign({}, options, { size: 5 });
 
   const toolTipLeft = (
     <ToolTip position={'left'} options={leftOptions}>
@@ -107,7 +107,11 @@ const MyComponent = () => {
           <button>Toggle</button>
         </OverlayTrigger>
       </div>
-      <div style={bottomRight}>
+      <div style={bottomLeft}>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTipRight} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle</button>
+        </OverlayTrigger>
+        <br />
         <OverlayTrigger closeOnScroll={true} overlay={toolTipLeft} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
           <button>Toggle</button>
         </OverlayTrigger>
@@ -120,7 +124,11 @@ const MyComponent = () => {
         <button>Toggle</button>
         </OverlayTrigger>
       </div>
-      <div style={bottomLeft}>
+      <div style={bottomRight}>
+        <OverlayTrigger closeOnScroll={true} overlay={toolTipLeft} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
+          <button>Toggle</button>
+        </OverlayTrigger>
+        <br />
         <OverlayTrigger closeOnScroll={true} overlay={toolTipRight} label={'Excerpt'} showLabel={'Show'} hideLabel={'Hide'}>
           <button>Toggle</button>
         </OverlayTrigger>

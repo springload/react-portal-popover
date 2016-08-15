@@ -2,7 +2,6 @@ import React from 'react';
 import Portal from 'react-portal';
 
 import PositionProvider from './PositionProvider';
-import ToolTipArrow from './ToolTipArrow';
 
 import {
   SIZE,
@@ -51,11 +50,9 @@ const ToolTip = (props) => {
         arrowSize={options.size}
         arrowOffset={options.offset}
         target={props.trigger}
+        options={options}
       >
         <div className={classes} style={style}>
-          <ToolTipArrow options={options} />
-          { options.useForeground ?
-            <ToolTipArrow options={options} foreground={true} /> : null}
           {props.children}
         </div>
       </PositionProvider>
