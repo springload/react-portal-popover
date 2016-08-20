@@ -1,7 +1,7 @@
 import React from 'react';
 import ToolTipArrow from './ToolTipArrow';
 
-import { DEFAULT_ARROW_MARGIN, POSITION, SIZE, BOUNDARY } from '../constants';
+import { DEFAULT_ARROW_MARGIN, POSITION, SIZE, BOUNDARY, CLASSES } from '../constants';
 
 
 const exceedsRightBound = (left, elementRect, scrollLeft, boundary = BOUNDARY) => {
@@ -87,6 +87,7 @@ class PositionProvider extends React.Component {
     this.getTop = this.getTop.bind(this);
     this.getLeft = this.getLeft.bind(this);
     this.getRight = this.getRight.bind(this);
+    this.handleFocusChange = this.handleFocusChange.bind(this);
   }
 
   positionElement(nextStyle) {
@@ -117,10 +118,29 @@ class PositionProvider extends React.Component {
     this.setState({
       nextStyle: this.getStyle(),
     });
+
+    if (this.tooltip) {
+      this.tooltip.focus();
+    }
+    document.addEventListener('focus', this.handleFocusChange, true);
+  }
+
+  handleFocusChange(e) {
+    const dialog = this.tooltip;
+
+    if (!dialog.contains(e.target)) {
+      e.stopPropagation();
+      dialog.focus();
+    }
   }
 
   componentDidUpdate() {
     this.positionElement(this.getStyle());
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('focus', this.handleFocusChange, true);
+    this.props.target.focus();
   }
 
   getArrow() {
@@ -235,7 +255,7 @@ class PositionProvider extends React.Component {
   }
 
   render() {
-    const { children, id, label, target, options } = this.props;
+    const { children, id, label, options } = this.props;
     const nextStyle = this.state.nextStyle;
     let nextOptions = options;
 
@@ -253,19 +273,24 @@ class PositionProvider extends React.Component {
     return (
       <div
         id={id}
-        aria-hidden={false}
         ref={(node) => { this.el = node; }}
-        role="tooltip"
-        aria-describedby={target ? target.id : ''}
         onClick={onClick}
         style={style}
-        tabIndex="0"
-        aria-label={label || ''}
       >
         <ToolTipArrow options={nextOptions} />
         { nextOptions.useForeground ?
-          <ToolTipArrow options={nextOptions} foreground={true} /> : null}
-        {children}
+          <ToolTipArrow options={nextOptions} foreground={true} /> : null }
+        <div
+          ref={(node) => { this.tooltip = node; }}
+          tabIndex="-1"
+          aria-labelledby={`label_for_${this.props.id}`}
+          role="tooltip"
+          className={this.props.classes}
+          style={this.props.style}
+        >
+          {label ? <h2 id={`label_for_${id}`} style={CLASSES.visuallyHidden}>{label}</h2> : null}
+          {children}
+        </div>
       </div>
     );
   }
@@ -276,11 +301,13 @@ PositionProvider.propTypes = {
   target: React.PropTypes.object,
   options: React.PropTypes.object,
   position: React.PropTypes.string,
-  id: React.PropTypes.string,
   label: React.PropTypes.string,
+  id: React.PropTypes.string,
   arrowSize: React.PropTypes.number,
   arrowOffset: React.PropTypes.number,
   boundary: React.PropTypes.number,
+  classes: React.PropTypes.string,
+  style: React.PropTypes.object,
 };
 
 export default PositionProvider;

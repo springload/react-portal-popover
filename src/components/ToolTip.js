@@ -51,10 +51,10 @@ const ToolTip = (props) => {
         arrowOffset={options.offset}
         target={props.trigger}
         options={options}
+        classes={classes}
+        style={style}
       >
-        <div className={classes} style={style}>
-          {props.children}
-        </div>
+        {props.children}
       </PositionProvider>
     </Portal>
   </div>);

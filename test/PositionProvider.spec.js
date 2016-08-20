@@ -27,9 +27,8 @@ describe('PositionProvider', () => {
     expect(shallow(<PositionProvider options={options} />).type()).to.equal('div');
   });
 
-  it('Should set aria-describedby and aria-label', () => {
-    expect(shallow(<PositionProvider options={options} />).prop('aria-describedby')).to.equal('');
-    expect(shallow(<PositionProvider options={options} />).prop('aria-label')).to.equal('');
+  it('Should set aria-labelledby', () => {
+    expect(shallow(<PositionProvider options={options} id={'foo'} />).find('[role="tooltip"]').prop('aria-labelledby')).to.equal('label_for_foo');
   });
 
   it('Should set position absolute', () => {

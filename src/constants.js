@@ -7,3 +7,15 @@ export const POSITION = 'bottom';
 export const USE_FOREGROUND = true;
 export const CLASS_BASE = 'tooltip';
 export const BOUNDARY = 10;
+
+export const CLASSES = {
+  visuallyHidden: {
+    position: 'absolute',
+    clip: 'rect(1px, 1px, 1px, 1px)',
+    padding: '0',
+    border: '0',
+    height: '1px',
+    width: '1px',
+    overflow: 'hidden',
+  },
+};

@@ -16,6 +16,7 @@ const MyComponent = () => {
   const toolTip = (
     <ToolTip position={'bottom'} options={options}>
       <p>My tooltip content</p>
+      <a href="//developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_dialog_role">A focusable child element.</a>
     </ToolTip>
   );
 

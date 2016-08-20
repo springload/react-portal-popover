@@ -31,9 +31,12 @@ class OverlayTrigger extends React.Component {
     window.removeEventListener('resize', this.onClickOutside);
     window.removeEventListener('scroll', this.onScroll, true);
   }
+  componentDidMount() {
+    this.isNodeMounted = true;
+  }
 
   componentDidUpdate() {
-    this.isNodeMounted = true;
+
   }
 
   componentWillUnmount() {
@@ -113,7 +116,7 @@ class OverlayTrigger extends React.Component {
       trigger: this.trigger || null,
       isOpened: this.state.open,
       onClose: this.onClose,
-      id: triggerId,
+      id: this.state.id,
       label: this.props.label || '',
     });
 
