@@ -9,7 +9,7 @@ const ToolTipArrow = (props) => {
     color,
     foregroundColor,
     borderWidth,
-    position
+    position,
   } = props.options;
 
   const positions = {

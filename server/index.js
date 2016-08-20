@@ -10,6 +10,10 @@ const webpackHot = require('webpack-hot-middleware');
 const app = express();
 const compiler = webpack(config);
 
+const PORT = process.env.PORT || 3000;
+
+app.use('/', express.static(path.join(__dirname, 'docs')));
+
 app.use(webpackDev(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath,
@@ -18,10 +22,10 @@ app.use(webpackDev(compiler, {
 app.use(webpackHot(compiler));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'examples/index_dev.html'));
+  res.sendFile(path.join(__dirname, '..', 'docs/index.html'));
 });
 
 
-app.listen(3000, 'localhost', () => {
-  console.log('Listening at http://localhost:3000'); // eslint-disable-line
+app.listen(PORT, 'localhost', () => {
+  console.log(`Listening at http://localhost:${PORT}`); // eslint-disable-line
 });

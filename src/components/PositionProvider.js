@@ -3,7 +3,6 @@ import ToolTipArrow from './ToolTipArrow';
 
 import { DEFAULT_ARROW_MARGIN, POSITION, SIZE, BOUNDARY } from '../constants';
 
-// TODO: Make all these functional boundary tests pure (eg, no document/window);
 
 const exceedsRightBound = (left, elementRect, scrollLeft, boundary = BOUNDARY) => {
   const bodyRect = document.body.getBoundingClientRect();

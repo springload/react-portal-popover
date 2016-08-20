@@ -4,10 +4,12 @@
   "description": "Popover for React using portals",
   "main": "lib/index.js",
   "scripts": {
+    "start": "node server/index.js",
     "lint": "eslint ./src",
     "test": "mocha test/.setup.js test/**/*.spec.js",
     "test:watch": "mocha --watch test/.setup.js test/**/*.spec.js",
-    "prepublish": "./node_modules/.bin/babel -d lib src/"
+    "pub": "npm run lint && npm test && ./node_modules/.bin/babel -d lib src/ && npm publish",
+    "build": "npm run lint && npm test && webpack --config=webpack.config.prod.js --progress -p"
   },
   "repository": {
     "type": "git",
