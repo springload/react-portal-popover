@@ -19,4 +19,4 @@ global.navigator = {
   userAgent: 'node.js'
 };
 
-documentRef = document;
+var documentRef = document;
