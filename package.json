@@ -41,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.0.0",
     "express": "^4.14.0",
+    "istanbul": "^0.4.4",
     "jsdom": "^9.4.2",
     "mocha": "^3.0.2",
     "react-addons-test-utils": "^15.3.0",

@@ -1,0 +1,5 @@
+exclude_paths:
+- "examples/index.js"
+- "docs/examples_bundle.js"
+- "server/index.js"
+- "test/"

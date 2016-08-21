@@ -1,4 +1,4 @@
-# react-portal-popover [![npm](https://img.shields.io/npm/v/react-portal-popover.svg)](https://www.npmjs.com/package/react-portal-popover) [![Dependency Status](https://david-dm.org/springload/react-portal-popover.svg)](https://david-dm.org/springload/react-portal-popover) [![devDependency Status](https://david-dm.org/springload/react-portal-popover/dev-status.svg)](https://david-dm.org/springload/react-portal-popover#info=devDependencies) [![Build Status](https://travis-ci.org/springload/react-portal-popover.svg?branch=master)](https://travis-ci.org/springload/react-portal-popover)
+# react-portal-popover [![npm](https://img.shields.io/npm/v/react-portal-popover.svg)](https://www.npmjs.com/package/react-portal-popover) [![Dependency Status](https://david-dm.org/springload/react-portal-popover.svg)](https://david-dm.org/springload/react-portal-popover) [![devDependency Status](https://david-dm.org/springload/react-portal-popover/dev-status.svg)](https://david-dm.org/springload/react-portal-popover#info=devDependencies) [![Build Status](https://travis-ci.org/springload/react-portal-popover.svg?branch=master)](https://travis-ci.org/springload/react-portal-popover) [![Code Climate](https://codeclimate.com/github/springload/react-portal-popover/badges/gpa.svg)](https://codeclimate.com/github/springload/react-portal-popover) [![Test Coverage](https://codeclimate.com/github/springload/react-portal-popover/badges/coverage.svg)](https://codeclimate.com/github/springload/react-portal-popover/coverage)
 
 A popover library for React, using [Portals](https://github.com/tajo/react-portal) for better positioning.
 
@@ -88,3 +88,5 @@ npm test
 npm run test:watch
 npm run lint
 ```
+
+[![Issue Count](https://codeclimate.com/github/springload/react-portal-popover/badges/issue_count.svg)](https://codeclimate.com/github/springload/react-portal-popover)
