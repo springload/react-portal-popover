@@ -1,3 +1,13 @@
-./src
-./test
-./examples
+src
+test
+examples
+.npmignore
+webpack*
+.travis.yml
+.eslintrc
+.codeclimate.yml
+.babelrc
+.nvmrc
+server/index.js
+docs/examples_bundle.js
+docs/index.html
