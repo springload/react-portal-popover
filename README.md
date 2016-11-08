@@ -75,11 +75,9 @@ const options = {
 
 ## Developing
 
-React is listed as a peerDependency, so you'll need to install a version of it yourself.
-
-```
+```sh
+nvm install
 npm install
-npm install react
 ```
 
 ## Running tests
