@@ -49,19 +49,20 @@
     "jsdom": "^9.4.2",
     "mocha": "^3.0.2",
     "nyc": "^8.1.0",
-    "react": "^15.3.0",
-    "react-addons-test-utils": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "react": "^15.4.1",
+    "react-addons-test-utils": "^15.4.1",
+    "react-dom": "^15.4.1",
     "sinon": "^1.17.5",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
   },
   "peerDependencies": {
-    "react": "^15.3.0"
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
   },
   "dependencies": {
-    "react-portal": "^2.2.1"
+    "react-portal": "^3.0.0"
   },
   "nyc": {
     "sourceMap": false,
